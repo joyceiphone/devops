@@ -44,6 +44,8 @@ Forwarding from [::1]:5000 -> 5000
 ```
 vagrant ssh
 ```
+You may check if the the service is running properly by running the app locally in your vagrant box.
+Follow the procedure from here [Git Repo](https://github.com/joyceiphone/app)
 
 ### Ingress exposes the host
 In the minikube, run the following command to enable ingress
