@@ -47,7 +47,7 @@ vagrant ssh
 You may check if the the service is running properly by running the app locally in your vagrant box.
 Follow the procedure from here [Git Repo](https://github.com/joyceiphone/app)
 
-### Ingress exposes the host
+### Ingress exposes the service
 In the minikube, run the following command to enable ingress
 ```
 minikube addons enable ingress
@@ -86,7 +86,7 @@ In [1]: import requests
 In [2]: result = requests.post("http://joyce.com/train")
 
 In [3]: result.status_code
-Out[3]: 503
+Out[3]: 404
 
 In [4]: result = requests.get("http://joyce.com/fallback?petal_length=1")
 
