@@ -96,3 +96,20 @@ Out[5]: 200
 In [6]:result.text
 Out[6]:'iris-setosa'
 ```
+### If the pods for app-deployment are down
+```python
+In [1]: import requests
+
+In [2]: result = requests.post("http://joyce.com/train")
+
+In [3]: result.status_code
+Out[3]: 503
+
+In [4]: result = requests.get("http://joyce.com/fallback?petal_length=1")
+
+In [5]: result.status_code
+Out[5]: 200
+
+In [6]:result.text
+Out[6]:'iris-setosa'
+```
