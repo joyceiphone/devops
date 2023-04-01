@@ -45,5 +45,52 @@ Forwarding from [::1]:5000 -> 5000
 vagrant ssh
 ```
 
-### Follow the procedures from the link below
-[APP Repo](https://github.com/joyceiphone/app)
+### Ingress exposes the host
+In the minikube, run the following command to enable ingress
+```
+minikube addons enable ingress
+kubectl apply -f /vagrant/services/ingress.yaml
+```
+
+### Add hosts
+```
+minikube ip
+echo "192.168.49.2 joyce.com" | sudo tee -a /etc/hosts
+```
+
+### Check if the service is up
+
+```python
+In [1]: import requests
+
+In [2]: result = requests.post("http://joyce.com/train")
+
+In [3]: result.status_code
+Out[3]: 200
+
+In [4]: result = requests.get("http://joyce.com/get-result?sepal_length=1&sepal_width=2&petal_length=3&petal_width=4")
+
+In [5]: result.status_code
+Out[5]: 200
+
+In [6]:result.text
+Out[6]:'iris-setosa'
+```
+
+### If the service is down
+```python
+In [1]: import requests
+
+In [2]: result = requests.post("http://joyce.com/train")
+
+In [3]: result.status_code
+Out[3]: 503
+
+In [4]: result = requests.get("http://joyce.com/fallback?petal_length=1")
+
+In [5]: result.status_code
+Out[5]: 200
+
+In [6]:result.text
+Out[6]:'iris-setosa'
+```
