@@ -19,4 +19,4 @@ spec:
         image: joyceiphone/fallback
         imagePullPolicy: IfNotPresent
         ports:
-          - containerPort: 500
+          - containerPort: 5000
